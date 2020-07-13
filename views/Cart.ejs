@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CART</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <link rel="stylesheet" href="/css-cart.css" type="text/css">
+</head>
+
+<body>
+    <div class="ui secondary  menu" style="height: 50px; background-color:#26a7fd; width: 100%;
+    margin: 0 auto !important;">
+
+        <a class="item" link href="/HomeLogin" style="padding-left: 60px;">
+            Home
+        </a>
+        <a class="item" link href="/list">
+            List
+        </a>
+        <a class="Active item">
+            Cart
+        </a>
+        <div class=" right menu" style=" height: 50px;width: 400px; padding-left: 60px !important;">
+            <div class="item">
+                <div class="ui icon input">
+                    <input type="text" placeholder="Search...">
+                    <i class="search link icon"></i>
+                </div>
+            </div>
+
+            <% if(token){ %>
+            <a class="ui item" link href="/login">
+                Login
+            </a>
+            <% } else {  %>
+            <a class="ui item" href="/logout">
+                Logout
+                <% } %>
+        </div>
+    </div>
+
+    <br>
+    <div class="ui top attached tabular menu" style=" margin: 0 auto; width: 90% !important;">
+        <a class="item active">
+            CART
+        </a>
+        <a class="item" href="/checkout">
+            CHECKOUT
+        </a>
+
+    </div>
+    <div class="ui bottom attached segment" style=" margin: 0 auto; width: 90%!important;">
+        <div style="width: 100%;  display: flex; justify-content: center;">
+            <div style="width: 60%;">
+                <% 
+                let harga_total =0;
+                cart.forEach(el => {
+                 harga_total+=parseInt(el.dataValues.Produk.harga)
+                    %>
+                <div style="display: flex; border-radius: 5px; margin: 5px;">
+
+                    <div style="margin:auto; padding: 5px; width: 100px;">
+                        <img src="<%= el.dataValues.Produk.image%>" width="80px">
+                    </div>
+                    <div style="margin:auto; padding: 5px; width: 100px;">
+                        <%=el.dataValues.Produk.merk%><br>
+                        <%=el.dataValues.Produk.jenis%>
+                    </div>
+                    <div style="margin:auto; width: 100px;">
+                        Rp. <%=el.dataValues.Produk.harga%>,-
+                    </div>
+                    <div>
+                        <a class="tombol tombol-beli" style="width: 30px;" href="/<%=el.dataValues.id%>">x</a>
+                    </div>
+                </div>
+                <% }) %>
+            </div>
+            <div style="width: 30%; margin-bottom: 10px; margin: 5px; border-radius: 5px; padding: 10px;">
+                <table>
+                    <tr>
+                        <td>Total Price Product</td>
+                        <td>=</td>
+                        <td>Rp.<%= harga_total%>,-</td>
+                    </tr>
+                </table>
+                <hr>
+
+
+                <br><br>
+                <div>
+                    <a class="tombol tombol-beli" style="background-color: black;" href="/checkout">Check Out</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <br><br><br><br><br>
+
+
+
+
+
+
+
+
+
+
+
+
+    <footer>
+        <div>
+            <small>copyright &copy; 2020 - FLOW. All Right Reserved.</small>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous">
+        </script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+</body>
+
+</html>

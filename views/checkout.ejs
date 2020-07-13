@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHECKOUT</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <link rel="stylesheet" href="/css-cart.css" type="text/css">
+</head>
+
+<body>
+    <div class="ui secondary  menu" style="height: 50px; background-color:#26a7fd; width: 100%; padding-left: 50px;
+    margin: 0 auto !important;">
+        <a class="item" link href="/HomeLogin">
+            Home
+        </a>
+        <a class="item" link href="/list">
+            List
+        </a>
+        <a class="Active item">
+            Cart
+        </a>
+        <div class=" right menu" style=" height: 50px;width: 400px; padding-left: 60px !important;">
+            <div class="item">
+                <div class="ui icon input">
+                    <input type="text" placeholder="Search...">
+                    <i class="search link icon"></i>
+                </div>
+            </div>
+
+            <% if(token){ %>
+            <a class="ui item" link href="/login">
+                Login
+            </a>
+            <% } else {  %>
+            <a class="ui item" href="/logout">
+                Logout
+                <% } %>
+        </div>
+    </div>
+    <br>
+
+    <div class="ui top attached tabular menu" style="margin: 0 auto; width: 90% !important;">
+        <a class="item" href="/cart">
+            CART
+        </a>
+        <a class="item active">
+            CHECKOUT
+        </a>
+
+
+    </div>
+    <div class="ui bottom attached segment" style="margin: 0 auto; width: 90% !important;">
+        <div style="border: 1px solid; margin: 20px;">
+            <div style="margin: 20px;">
+                <h2>Shipping Address</h2>
+                <hr>
+                Please complete for the next process..!<br>
+                Delivery within one day working after payment is received.
+                <div style="margin:20px;">
+                    <div style="margin: 20px;">
+                        <hr>
+                        <div class="ui form">
+                            <div class="field" style="width: 60% !important;">
+                                <label>Email Adress</label>
+                                <input type="email">
+                                <label><br>Phone Number</label>
+                                <input type="number">
+                                <label><br>Nick name</label>
+                                <input type="text">
+                            </div>
+                        </div><br>
+                        <hr>
+                    </div>
+                </div>
+
+                Destination Address:
+                <div style="margin:20px;">
+                    <div style="margin: 20px;">
+                        <div class="ui form">
+                            <div class="field" style="width: 60% !important;">
+                                <label>Country</label>
+                                <input type="text" value="Indonesia">
+                                <label><br>Province</label>
+                                <input type="text" value="Jawa Tengah">
+                                <label><br>Country</label>
+                                <select class="ui search dropdown" id="kota">
+                                    <option value="">Select City</option>
+                                    <% data.rajaongkir.results.forEach(el => { %>
+                                    <option value="<%= el.city_id%>"><%= el.city_name%></option>
+                                    <% }) %>
+                                </select>
+                                <label><br>Address</label>
+                                <textarea></textarea>
+                                <label><br>Weight (gram)</label>
+                                <input type="text" id="berat">
+                                <label>
+                                    <label><br>Postal Fee</label>
+                                    <select id="jenis">
+                                    </select>
+                                </label>
+                                <span id="ongkos"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="ui button" style="margin: 20px!important">
+                        Submit
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <footer>
+        <div>
+            <small>copyright &copy; 2020 - FLOW. All Right Reserved.</small>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous">
+        </script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+</body>
+
+<script>
+    $("#kota, #berat").change(function () {
+        $.get("/contoh_api?tujuan=" + $('#kota').val() + "&berat=" + $('#berat').val(), function (data, status) {
+            data.rajaongkir.results[0].costs.forEach(hasil => {
+                $('#jenis').append('<option value="' + hasil.cost[0].value + '"> ' + hasil.service + ' -  ' + hasil.cost[0].value + '</option>')
+            })
+        });
+    });
+
+
+    // $("#jenis").change(function () {
+    //     $('#ongkos').html($("#jenis").val())
+    // })
+</script>
+
+</html>

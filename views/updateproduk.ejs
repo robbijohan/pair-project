@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UPDATE</title>
+    <link rel="stylesheet" href="/css-update.css" type="text/css">
+</head>
+
+<body>
+
+    <div class="bokluar">
+        <div class="login">
+            <form action="/update_produk/<%= data.id%>" method="PUT">
+                <div class="box-login">
+                    <i class="fas fa-envelope-open-text"></i>
+                    <input type="text" name="merk" placeholder="Brand Name" value="<%= data.merk%>">
+                </div>
+                <div class="box-login">
+                    <i class="fas fa-lock"></i>
+                    <input type="text" name="ukuran" placeholder="Size" value="<%= data.ukuran%>">
+                </div>
+                <div class="box-login">
+                    <i class="fas fa-envelope-open-text"></i>
+                    <input type="text" name="harga" placeholder="Price" value="<%= data.harga%>">
+                </div>
+                <div class="box-login">
+                    <i class="fas fa-envelope-open-text"></i>
+                    <input type="text" name="jenis" placeholder="Type" value="<%= data.jenis%>">
+                </div>
+                <div class="box-login">
+                    <i class="fas fa-envelope-open-text"></i>
+                    <input type="text" src="" name="image" value="<%= data.image%>">
+                </div>
+                <input type="submit" value="submit" class="btn-login">
+            </form>
+        </div>
+    </div>
+
+
+
+
+
+
+</body>
+
+</html>

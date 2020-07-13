@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LIST</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <link rel="stylesheet" href="/css-list.css" type="text/css">
+</head>
+
+<body>
+
+    <div class="ui secondary  menu" style="height: 50px; background-color:#26a7fd; width: 100%; padding-left: 50px;
+    margin: 0 auto !important;">
+        <a class="item" link href="/HomeLogin">
+            Home
+        </a>
+        <a class="Active item">
+            List
+        </a>
+        <a class="item" link href="/cart">
+            Cart
+        </a>
+        <div class=" right menu" style=" height: 50px;width: 400px; padding-left: 60px !important;">
+            <div class="item">
+                <div class="ui icon input">
+                    <input type="text" placeholder="Search...">
+                    <i class="search link icon"></i>
+                </div>
+            </div>
+
+            <% if(token){ %>
+            <a class="ui item" link href="/login">
+                Login
+            </a>
+            <% } else {  %>
+            <a class="ui item" href="/logout">
+                Logout
+                <% } %>
+        </div>
+    </div>
+
+
+
+
+
+
+    <div class="tengah">
+        <center>
+            <h1>Guaranteed Products</h1>
+            <br>
+            <p>
+            <h3>By first researching the products that we will sell, we will also be able to<br>
+                see how big the market potential of these products, the current sales trends and can predict<br>
+                approximately how the trend of these products in the next few months.
+                </p>
+                <br>
+        </center>
+    </div>
+
+
+
+    <div class="badan">
+        <h2>List Product</h2>
+        <% data.forEach(el => { %>
+        <div class="list-produk">
+            <img src="<%= el.dataValues.image%>">
+            <div class="tek">
+                <a class="tombol tombol-beli" href="/detail_produk/<%=el.dataValues.id%>">Detail</a>
+            </div>
+
+        </div>
+        <% }) %>
+    </div>
+    <br>
+    <center>
+        <div style="border-radius: 10px; padding: 20px; margin: 0 auto; background-color: white; width: 90%;">
+            <table>
+                <tr>
+                    <td style=" padding: 0px;"><img src="/image/Logo11.png" width="70px"></td>
+                    <td style="padding: 0px;">
+                        <h4>FLOW Store</h4>
+                    </td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <td>Jl. RC. Veteran Raya, Bintaro No.27, Jakarta Selatan<br>
+                        0821-3816-3423<br>FLOW@Store.co.id</td>
+                </tr>
+            </table>
+        </div>
+    </center>
+    <br>
+
+
+
+
+
+
+
+    <footer>
+        <div>
+            <small>copyright &copy; 2020 - FLOW. All Right Reserved.</small>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous">
+        </script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+</body>
+
+</html>
