@@ -18,7 +18,7 @@ class userController {
     }
     static login(req, res, next) {
         const { name, password } = req.body
-        // console.log(req.body)
+        // console.log(req.body) 
         User.findOne({ where: { name } })
             .then(data => {
                 const user = data.dataValues
