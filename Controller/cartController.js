@@ -77,6 +77,7 @@ class cartController {
         let UserId = data_user.id
         Cart.findAll({ where: { UserId }, include: { model: Produk } })
             .then(cart => {
+                console.log(cart)
                 res.render('Cart', { cart })
             })
             .catch(err => {
