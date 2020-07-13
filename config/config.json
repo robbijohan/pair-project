@@ -18,6 +18,7 @@
     "username": "onqafxomeyhbkf",
     "password": "b76e9df033f17fad809dfc0a00de2b48082f3168cfe94df7b2f506c1eac78954",
     "database": "dbv80in0lmegni",
+    "port": 5432,
     "host": "ec2-18-213-176-229.compute-1.amazonaws.com",
     "dialect": "postgres"
   }
