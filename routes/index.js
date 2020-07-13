@@ -34,13 +34,14 @@ router.use('/cart', cart)
 
 router.use('/login', loginController.login)
 
-
-
 router.get('/register', registerController.register)
 router.get('/login', loginController.login)
 router.get('/logout', loginController.logout)
+
 router.get('/addCart/:id', authentication, cartController.cartPost)
 router.get('/checkout', authentication, cartController.Ongkir)
+
+
 
 
 
@@ -57,7 +58,6 @@ router.get('/contoh_api', (req, res) => {
         // console.log(body);
     });
 })
-
 
 
 router.get('/HomeLogin', (req, res) => {
