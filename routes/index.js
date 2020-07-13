@@ -38,10 +38,10 @@ router.get('/register', registerController.register)
 router.get('/login', loginController.login)
 router.get('/logout', loginController.logout)
 
+
+
 router.get('/addCart/:id', authentication, cartController.cartPost)
 router.get('/checkout', authentication, cartController.Ongkir)
-
-
 
 
 
