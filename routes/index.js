@@ -57,7 +57,7 @@ router.get('/contoh_api', (req, res) => {
     });
 })
 
-
+router.get('/pencarian', produkController.search)
 router.get('/HomeLogin', (req, res) => {
     res.render('YaItulah')
 })
@@ -80,6 +80,7 @@ router.get('/update_produk/:id', produkController.renderUpdate)
 // Detail
 router.get('/detail_produk/:id', produkController.detailProduk)
 router.get('/list_merk/:merk', produkController.findMerk)
+
 
 
 

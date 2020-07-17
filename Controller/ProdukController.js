@@ -1,4 +1,5 @@
 const { Produk } = require('../models')
+const { Op } = require('sequelize')
 
 class produkController {
     static findAll(req, res, next) {
@@ -116,6 +117,20 @@ class produkController {
 
     static renderFormProduct(req, res, next) {
         res.render('addproduk')
+    }
+
+    static search(req, res, next) {
+        const { keyword } = req.query;
+        console.log(keyword)
+        Produk.findAll({
+            where: { merk: { [Op.like]: '%' + keyword + '%' } }
+        })
+            .then(data => {
+                res.render('list', { data })
+            })
+            .catch(err => {
+                res.status(400).json(err)
+            })
     }
 
 }
