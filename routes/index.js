@@ -87,7 +87,9 @@ router.get('/list_merk/:merk', produkController.findMerk)
 
 router.get('/detail_admin/:id', produkController.detailAdmin)
 
-
+router.get('/errorlogin', (req, res) => {
+    res.render('popuplogin')
+})
 
 
 module.exports = router
